@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="售后无忧 - 专业、透明的售后服务平台。提供退换货指南、故障报修流程、客户投诉建议及售后服务标准查询。解决您的消费后顾之忧，保障您的合法权益。">
+    <meta name="keywords" content="售后,售后服务,退换货,维修,投诉,消费者权益,售后标准">
+    <title>售后无忧 - 专业售后服务与退换货指南平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --primary-hover: #004494;
+            --secondary-color: #f8f9fa;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+            --radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: #fff;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            fill: currentColor;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 16px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions button {
+            padding: 8px 20px;
+            border-radius: var(--radius);
+            border: 1px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .header-actions button.primary {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .header-actions button:hover {
+            opacity: 0.9;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .search-box {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 16px 24px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .search-box button {
+            padding: 0 32px;
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        /* Service Grid */
+        .service-section h2 {
+            font-size: 24px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-color);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--secondary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            color: var(--primary-color);
+        }
+
+        .service-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Sidebar */
+        aside .card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .guide-list li {
+            margin-bottom: 12px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .guide-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .guide-list a {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .guide-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .guide-list span.badge {
+            background: var(--secondary-color);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        /* Process Section */
+        .process-section {
+            background: var(--secondary-color);
+            padding: 60px 20px;
+            margin-top: 60px;
+        }
+
+        .process-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .process-step {
+            position: relative;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 24px;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background: #ccc;
+            z-index: 0;
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step h4 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .process-step p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 16px;
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 16px 0;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-main);
+        }
+
+        .faq-question:hover {
+            color: var(--primary-color);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .faq-answer p {
+            padding-bottom: 16px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 60px 20px 20px;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h4 {
+            color: #fff;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            max-width: 300px;
+        }
+
+        .footer-col h5 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            font-size: 14px;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                height: auto;
+                padding: 16px;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .header-actions {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                margin-top: 10px;
+            }
+
+            .header-actions button {
+                flex: 1;
+                margin: 0 5px;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .process-step::after {
+                display: none;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="#" class="logo">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+            </svg>
+            售后无忧
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">服务指南</a></li>
+                <li><a href="#">常见问题</a></li>
+                <li><a href="#">投诉建议</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button onclick="openModal('login')">登录</button>
+            <button class="primary" onclick="openModal('report')">报修/投诉</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>专业、透明、高效的售后服务体系</h1>
+            <p>无论您是退换货、产品维修还是维权咨询，我们都在这里为您提供标准化的解决方案。</p>
+            <div class="search-box">
+                <input type="text" id="serviceSearch" placeholder="输入您的服务需求，例如：退货流程、保修期...">
+                <button onclick="handleSearch()">查询指南</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Main Content -->
+        <section class="service-section">
+            <h2>常用服务入口</h2>
+            <div class="service-grid">
+                <div class="service-card" onclick="openService('refund')">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                    </div>
+                    <h3>七日无理由退货</h3>
+                    <p>了解如何申请七天无理由退货，确认您的商品是否符合退货条件及所需材料。</p>
+                </div>
+
+                <div class="service-card" onclick="openService('repair')">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3>产品保修与维修</h3>
+                    <p>查询产品保修期，在线提交故障报修申请，预约上门维修或寄回服务。</p>
+                </div>
+
+                <div class="service-card" onclick="openService('exchange')">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                    </div>
+                    <h3>换货申请</h3>
+                    <p>因质量问题或规格不符需要换货？查看换货流程、运费承担规则及时间要求。</p>
+                </div>
+
+                <div class="service-card" onclick="openService('satisfaction')">
+                    <div class="service-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                    </div>
+                    <h3>满意度评价</h3>
+                    <p>完成售后处理后，请对我们的服务进行评价。您的反馈将帮助我们持续改进。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sidebar -->
+        <aside>
+            <div class="card">
+                <h3>热门指南</h3>
+                <ul class="guide-list">
+                    <li><a href="#">售后服务承诺 <span class="badge">必读</span></a></li>
+                    <li><a href="#">发票开具与保修凭证</a></li>
+                    <li><a href="#">退货/换货物流查询</a></li>
+                    <li><a href="#">残次品处理规定</a></li>
+                    <li><a href="#">特殊商品售后政策</a></li>
+                </ul>
+            </div>
+
+            <div class="card" style="background: #fff3cd; border-color: #ffeeba;">
+                <h3>温馨提示</h3>
+                <p style="font-size: 14px; color: #856404; line-height: 1.6;">
+                    请在收到商品后及时验货。如有损坏或缺失，请务必在签收后24小时内拍照留证并联系客服。保留好购买凭证和包装，以便顺利办理售后。
+                </p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h4>提交申请</h4>
+                <p>在线填写报修单或申请单，上传相关凭证照片</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h4>审核确认</h4>
+                <p>客服将在24小时内审核您的申请，并联系您确认细节</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h4>处理执行</h4>
+                <p>根据审核结果，安排维修、换货或退款流程</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h4>服务完成</h4>
+                <p>您将收到完成通知，并可在系统中评价服务体验</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 style="text-align: center; font-size: 28px; margin-bottom: 40px;">常见问题解答</h2>
+        
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>所有商品都支持七天无理由退货吗？</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+                <p>并非所有商品都支持七天无理由退货。根据国家规定，生鲜食品、定制商品、数字化商品（如软件、游戏充值）、以及拆封后影响二次销售的商品（如贴膜、内衣等）不支持无理由退货。具体请查看商品详情页的售后说明。</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>维修产品需要承担运费吗？</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+                <p>一般情况下，因产品质量问题导致的维修，我们承担往返运费。若因人为损坏、意外事故或超出保修期导致的维修，可能需要您承担寄回运费。部分商品可能提供上门取件服务，具体以您所在地区的服务政策为准。</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>售后申请提交后多久能处理完毕？</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+                <p>审核时间通常在1-2个工作日内。对于需要寄回检测的产品，检测及维修时间取决于故障的复杂程度，一般会在检测完成后3-7个工作日内完成。我们会在每个关键节点通过短信或站内信通知您。</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">
+                <span>如果不满意如何进行投诉？</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-answer">
+                <p>如果您对当前的售后服务态度或处理结果不满意，请在售后单中填写“投诉”选项。我们的售后经理会在48小时内介入调查，并根据调查结果给予您合理的解决方案。您也可以拨打我们的全国统一客服热线进行投诉。</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-brand">
+            <h4>售后无忧平台</h4>
+            <p>致力于为消费者提供最便捷、最透明的售后服务体验。您的满意是我们服务的唯一标准。</p>
+        </div>
+        <div class="footer-col">
+            <h5>服务支持</h5>
+            <ul>
+                <li><a href="#">退货政策</a></li>
+                <li><a href="#">保修说明</a></li>
+                <li><a href="#">维修进度</a></li>
+                <li><a href="#">发票管理</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h5>帮助中心</h5>
+            <ul>
+                <li><a href="#">联系客服</a></li>
+                <li><a href="#">服务热线</a></li>
+                <li><a href="#">在线留言</a></li>
+                <li><a href="#">隐私条款</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h5>关于我们</h5>
+            <ul>
+                <li><a href="#">平台介绍</a></li>
+                <li><a href="#">加入我们</a></li>
+                <li><a href="#">合作咨询</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2023 售后无忧平台 版权所有 | 京ICP备XXXXXXXX号</p>
+    </div>
+</footer>
+
+<script>
+    // Simple interaction for FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+            const faqItem = button.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all others
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Toggle current
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        });
+    });
+
+    // Mock Search Function
+    function handleSearch() {
+        const input = document.getElementById('serviceSearch');
+        const query = input.value.trim();
+        if(query) {
+            alert('正在为您查询关于“' + query + '”的售后指南...\n（演示功能：此处将跳转至具体指南页面）');
+        } else {
+            alert('请输入您需要查询的内容');
+        }
+    }
+
+    // Mock Service Opening
+    function openService(type) {
+        const names = {
+            'refund': '七日无理由退货',
+            'repair': '产品保修与维修',
+            'exchange': '换货申请',
+            'satisfaction': '满意度评价'
+        };
+        alert('正在跳转至【' + names[type] + '】详情页...\n（演示功能：此处将展示详细操作步骤）');
+    }
+
+    // Mock Modal
+    function openModal(type) {
+        if(type === 'login') {
+            alert('跳转至登录页面...\n（演示功能：此处将打开登录弹窗）');
+        } else {
+            alert('打开报修/投诉表单...\n（演示功能：此处将弹出表单）');
+        }
+    }
+</script>
+
+</body>
+</html>
