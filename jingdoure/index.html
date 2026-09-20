@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="京都热 - 深度探索日本京都的热门景点、季节限定美食、传统艺能体验及隐秘秘境。为您提供最实用的京都旅行攻略与在地文化指南。">
+    <meta name="keywords" content="京都热,京都旅游,京都美食,京都攻略,日本京都">
+    <title>京都热 - 深度探索日本古都的旅行攻略与在地指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #8E2323; /* 京都红 */
+            --secondary-color: #2C2C2C; /* 深灰 */
+            --accent-color: #D4AF37; /* 金色点缀 */
+            --bg-color: #F9F7F2; /* 米色背景 */
+            --card-bg: #FFFFFF;
+            --text-main: #333333;
+            --text-light: #666666;
+            --spacing-unit: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* 顶部导航 */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--secondary-color);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* 首屏 Hero */
+        .hero {
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('https://picsum.photos/seed/kyoto_temple/1920/1080.jpg') center/cover no-repeat;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #6e1c1c;
+            transform: translateY(-2px);
+        }
+
+        /* 搜索框 */
+        .search-bar {
+            background: white;
+            padding: 0.5rem;
+            border-radius: 50px;
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            outline: none;
+            border-radius: 50px;
+        }
+
+        .search-bar button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* 分类卡片 */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .category-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .category-img {
+            height: 160px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .category-info {
+            padding: 1.5rem;
+        }
+
+        .category-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .category-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* 特色内容区 */
+        .featured-section {
+            background-color: white;
+            padding: 4rem 0;
+            margin-bottom: 4rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .main-post {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .main-post img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .main-post-content {
+            padding: 2rem;
+        }
+
+        .main-post h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .meta {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .tag {
+            background-color: var(--bg-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .main-post p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .side-list {
+            background: var(--bg-color);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .side-list h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .side-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .side-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .side-item img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .side-item-info h5 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            line-height: 1.4;
+        }
+
+        .side-item-info span {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* 实用贴士 */
+        .tips-section {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .tip-box {
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .tip-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .tip-box h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .tip-box p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #1a1a1a;
+            color: #888;
+            padding: 3rem 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-wrapper { flex-direction: column; gap: 1rem; }
+            .content-grid { grid-template-columns: 1fr; }
+            .tips-container { grid-template-columns: 1fr; }
+            .search-bar { width: 100%; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">京都<span>热</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">景点攻略</a></li>
+                    <li><a href="#">美食探店</a></li>
+                    <li><a href="#">住宿指南</a></li>
+                    <li><a href="#">交通路线</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>深度探索京都热</h1>
+                <p>从千年古寺到隐秘庭院，从怀石料理到抹茶甜点。在这里，感受古都最纯粹的温度。</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="搜索目的地、餐厅或体验...">
+                    <button>搜索</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- 分类浏览 -->
+            <section class="categories-grid">
+                <article class="category-card">
+                    <img src="https://picsum.photos/seed/kyoto_temple/400/300" alt="经典古迹" class="category-img">
+                    <div class="category-info">
+                        <h3>经典古迹</h3>
+                        <p>清水寺、金阁寺、伏见稻荷大社。探索日本文化的精髓。</p>
+                    </div>
+                </article>
+                <article class="category-card">
+                    <img src="https://picsum.photos/seed/kyoto_food/400/300" alt="在地美食" class="category-img">
+                    <div class="category-info">
+                        <h3>在地美食</h3>
+                        <p>怀石料理、汤豆腐、抹茶甜点。舌尖上的京都滋味。</p>
+                    </div>
+                </article>
+                <article class="category-card">
+                    <img src="https://picsum.photos/seed/kyoto_zen/400/300" alt="禅意生活" class="category-img">
+                    <div class="category-info">
+                        <h3>禅意生活</h3>
+                        <p>茶道体验、花道学习、和服漫步。慢享京都时光。</p>
+                    </div>
+                </article>
+                <article class="category-card">
+                    <img src="https://picsum.photos/seed/kyoto_night/400/300" alt="夜游京都" class="category-img">
+                    <div class="category-info">
+                        <h3>夜游京都</h3>
+                        <p>鸭川纳凉床、祇园花见小路、岚山夜枫。感受古都夜色。</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 精选内容 -->
+            <section class="featured-section">
+                <div class="section-title">
+                    <h2>热门推荐</h2>
+                    <p>为您精选最值得体验的京都热点</p>
+                </div>
+                <div class="content-grid">
+                    <div class="main-post">
+                        <img src="https://picsum.photos/seed/kyoto_gion/800/500" alt="祇园漫步">
+                        <div class="main-post-content">
+                            <div class="meta">
+                                <span class="tag">文化体验</span>
+                                <span>2023-10-24</span>
+                                <span>作者：京都向导</span>
+                            </div>
+                            <h3>祇园花见小路：如何优雅地穿梭在艺伎之乡？</h3>
+                            <p>祇园是京都最著名的传统区，也是艺伎文化的发源地。花见小路是其中最负盛名的街道。本文将详细介绍如何在遵守礼仪的前提下，欣赏艺伎的身影，并推荐沿途的咖啡馆与茶室。</p>
+                            <a href="#" class="btn">阅读全文</a>
+                        </div>
+                    </div>
+                    <aside>
+                        <div class="side-list">
+                            <h4>热门榜单</h4>
+                            <div class="side-item">
+                                <img src="https://picsum.photos/seed/kyoto_kaiseki/100/100" alt="怀石料理">
+                                <div class="side-item-info">
+                                    <h5>京都必吃：十种顶级怀石料理推荐</h5>
+                                    <span>美食 · 2.4w 阅读</span>
+                                </div>
+                            </div>
+                            <div class="side-item">
+                                <img src="https://picsum.photos/seed/kyoto_arashiyama/100/100" alt="岚山竹林">
+                                <div class="side-item-info">
+                                    <h5>避开人潮：岚山竹林秘境路线图</h5>
+                                    <span>攻略 · 1.8w 阅读</span>
+                                </div>
+                            </div>
+                            <div class="side-item">
+                                <img src="https://picsum.photos/seed/kyoto_sushi/100/100" alt="鸭川">
+                                <div class="side-item-info">
+                                    <h5>鸭川纳凉床：夏季限定的惬意时光</h5>
+                                    <span>休闲 · 1.5w 阅读</span>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- 实用贴士 -->
+            <section class="tips-section">
+                <div class="container tips-container">
+                    <div class="tip-box">
+                        <div class="tip-icon">📅</div>
+                        <h3>最佳旅行时间</h3>
+                        <p>春季（3月-5月）赏樱，秋季（10月-11月）赏枫。若想避开高峰，可选择春季的黄金周前后或秋季的周末。</p>
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-icon">🎫</div>
+                        <h3>门票预约</h3>
+                        <p>部分热门寺庙如清水寺、金阁寺需提前在官网或旅游APP购买门票，以免现场排队。</p>
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-icon">🚇</div>
+                        <h3>交通建议</h3>
+                        <p>建议购买“京都巴士一日券”或使用ICOCA卡。京都市内地铁覆盖主要景点，但巴士更能深入老城区。</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于京都热</h4>
+                    <p>我们致力于为旅行者提供最真实、最实用的京都旅游信息。从历史文化到现代生活，带您全方位感受这座古都的魅力。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">景点地图</a></li>
+                        <li><a href="#">美食地图</a></li>
+                        <li><a href="#">酒店预订</a></li>
+                        <li><a href="#">交通指南</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li>邮箱：contact@kyoto-hot.com</li>
+                        <li>电话：+81-75-XXX-XXXX</li>
+                        <li>地址：日本京都府京都市东山区...</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 京都热 - 京都旅游指南. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
